@@ -13,6 +13,7 @@ function createCardContent(item) {
         <h1><a href="${item.website}" target="_blank"">${item.name}</a></h1>
         <p><b>Role</b>: ${item.role}</p>
         <p><b>Status</b>: ${item.status}</p>
+        <br />
     ` 
 }
 

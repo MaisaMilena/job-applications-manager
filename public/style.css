@@ -2,6 +2,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
+h1 {
+    margin-block-start: 0;
+    margin-block-end: 0.3em;
+}
+
 p {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -20,13 +25,28 @@ a:visited {
     color: #5887ca;
 }
 
-.flex-container {
+/* Where the application's card appear */
+.applications-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    width: 600px;
     overflow-y: scroll;
 }
 
 .application-card {
-    border: 1px solid #ccc;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #bdbcbc;
+    border-radius: 10px;
+}
+
+.body-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.body-filter-section {
+    width: 200px;
 }
