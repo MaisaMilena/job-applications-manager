@@ -25,3 +25,18 @@ app.get('/data',(req, res) => {
         res.send(jsonData);
     });
 })
+
+app.get('/resume/:file_name',(req, res) => {
+    console.log(req)
+    let url = __dirname + '/resume/' + req["file_name"]
+    fs.readFile(url, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading data.json:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+
+        // const jsonData = JSON.parse(data);
+        res.sendFile(data);
+    });
+})

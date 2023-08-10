@@ -12,8 +12,13 @@ p {
     margin-block-end: 0;
 }
 
+.p_secondary {
+    color: #75818e;
+    font-size: small;
+}
+
 h1 > a {
-    color: #5887ca;
+    color: #667890;
 }
 
 a {
@@ -30,15 +35,30 @@ a:visited {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 600px;
+    min-width: 600px;
     overflow-y: scroll;
 }
 
 .application-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     margin-top: 10px;
     padding: 10px;
     border: 1px solid #bdbcbc;
     border-radius: 10px;
+}
+
+.application-card-leading-content {
+    display: flex; 
+    flex-direction: column; 
+    max-width: 600px;
+}
+
+.application-card-trailing-content {
+    display: flex; 
+    flex-direction: column; 
+    max-width: 200px;
 }
 
 .body-container {

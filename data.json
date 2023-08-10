@@ -8,9 +8,10 @@
             "origin_url": null,
             "origin_name": null
         },
-        "application_timestamp": 1691590816,
+        "application_timestamp": 1691629910,
         "status": "sent",
-        "resume_url": ""
+        "resume_url": "",
+        "note": "Entry place to one day join a startship crew"
     },
     {
         "name": "Kiki's Delivery Service",
@@ -20,8 +21,9 @@
             "origin_url": null,
             "origin_name": null
         },
-        "application_timestamp": 1691590816,
+        "application_timestamp": 1691629910,
         "status": "sent",
-        "resume_url": ""
+        "resume_url": "./resume/example-v1.pdf",
+        "note": "A delivery app could help Kiki manage the deliveries. Looking forward hearing from her ^-^"
     }
 ]
