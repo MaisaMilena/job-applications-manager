@@ -1,12 +1,23 @@
 function populateTable(data) {
     const dataContainer = document.getElementById("content-list");
     dataContainer.innerHTML = ''
+
+    const applicationsCount = document.createElement("p")
+    applicationsCount.innerHTML = makeTotalCount(data)
+    dataContainer.appendChild(applicationsCount)
     data.forEach((item) => {
         const div = document.createElement("div");
         div.classList.add("application-card");
         div.innerHTML = makeCardContent(item)
         dataContainer.appendChild(div);
     });
+}
+
+function makeTotalCount(data) {
+    let dataArray = Array.from(data)
+    return `
+        <p>Total: ${dataArray.length}</p>
+    `
 }
 
 function makeCardContent(item) {
