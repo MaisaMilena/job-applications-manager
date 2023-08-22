@@ -1,5 +1,6 @@
 function populateTable(data) {
     const dataContainer = document.getElementById("content-list");
+    dataContainer.innerHTML = ''
     data.forEach((item) => {
         const div = document.createElement("div");
         div.classList.add("application-card");
@@ -51,6 +52,48 @@ function formatDate(timestamp) {
     return `${day}/${month}/${year}`
 }
 
+
+// Data handling
+function addFilterData() {
+    document.getElementById("filterForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'))
+        var filteredCheckboxes = 
+            checkboxes
+            .filter((checkbox) => checkbox.checked)
+            .map((e) => e.defaultValue)
+
+        const radioButtons = Array.from(document.querySelectorAll('input[type="radio"]'))
+        var filteredRadio = 
+            radioButtons
+            .filter((radio) => radio.checked)
+            .map((e) => e.defaultValue)
+
+        const body = {
+            status: filteredCheckboxes,
+            order: filteredRadio.pop()
+        }
+
+        fetch("/data", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            populateTable(data);
+        })
+        .catch(error => {
+            console.error("Error fetching JSON data:", error);
+        });
+    })
+}
+
+
 fetch("/data")
     .then(response => response.json())
     .then(data => {
@@ -59,3 +102,5 @@ fetch("/data")
     .catch(error => {
         console.error("Error fetching JSON data:", error);
     });
+
+addFilterData()

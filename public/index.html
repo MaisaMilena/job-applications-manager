@@ -12,13 +12,35 @@
 <body>
     <h1>"Hi! 👋"</h1>
     <section class="body-container">
-        <div> 
-            <ul>
-                <li><a href="#">London</a></li>
-                <li><a href="#">Paris</a></li>
-                <li><a href="#">Tokyo</a></li>
-              </ul>
-        </div>
+        <form id="filterForm"> 
+            <div>
+                <p>Status</p>
+                <input type="checkbox" id="status0" name="status0" value="sent">
+                <label for="status0"> Sent</label><br>
+                <input type="checkbox" id="status1" name="status1" value="passed_rh">
+                <label for="status1"> Passed RH phase</label><br>
+                <input type="checkbox" id="status2" name="status2" value="passed_tech">
+                <label for="status2"> Passed tech</label><br>
+                <input type="checkbox" id="status3" name="status3" value="waiting_feedback">
+                <label for="status3"> Waiting feedback</label><br>
+                <input type="checkbox" id="status4" name="status4" value="rejected">
+                <label for="status4"> Rejected</label><br><br>
+            </div>
+
+            <div>
+                <p>Ordering</p>
+                <input type="radio" id="order0" name="order" value="date_asc">
+                <label for="order0"> Date asc</label><br>
+                <input type="radio" id="order1" name="order" value="date_desc">
+                <label for="order1"> Date desc</label><br>
+                <input type="radio" id="order2" name="order" value="alphabetical">
+                <label for="order2"> Alphabetical</label><br>
+            </div>
+            <br><br>
+            <button type="submit" value="Submit">Submit</button>
+            <button type="reset" value="Reset">Reset</button>
+            <!-- <button type="reset" value="Reset"> -->
+        </form>
 
         <div class="applications-container" id="content-list">
             <!-- Content will be added here dynamically -->

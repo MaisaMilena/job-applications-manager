@@ -9,7 +9,7 @@
             "origin_name": null
         },
         "application_timestamp": 1691629910,
-        "status": "sent",
+        "status": ["sent"],
         "resume_url": "",
         "note": "Entry place to one day join a startship crew"
     },
@@ -22,8 +22,21 @@
             "origin_name": null
         },
         "application_timestamp": 1691629910,
-        "status": "sent",
+        "status": ["sent"],
         "resume_url": "./resume/example-v1.pdf",
         "note": "A delivery app could help Kiki manage the deliveries. Looking forward hearing from her ^-^"
+    },
+    {
+        "name": "Hogwarts",
+        "role": "student",
+        "website": "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service", 
+        "application_origin": {
+            "origin_url": null,
+            "origin_name": null
+        },
+        "application_timestamp": 1691629910,
+        "status": ["rejected"],
+        "resume_url": "./resume/example-v1.pdf",
+        "note": "I'm a fool"
     }
 ]
