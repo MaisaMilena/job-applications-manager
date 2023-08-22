@@ -1,17 +1,17 @@
 
 [
     {
-        "name": "Star Fleet",
-        "role": "cadet",
+        "name": "USS Voyager",
+        "role": "Computer Systems Specialist",
         "website": "https://en.wikipedia.org/wiki/Starfleet_Academy", 
         "application_origin": {
             "origin_url": null,
-            "origin_name": null
+            "origin_name": "LinkedIn"
         },
         "application_timestamp": 1691629910,
-        "status": ["sent"],
+        "status": ["passed_rh"],
         "resume_url": "",
-        "note": "Entry place to one day join a startship crew"
+        "note": "\"Ships and vessels are dependent on very sophisticated computer systems; these specialists are responsible for maintaining them.\" Recruiter contacted me. Waiting for my technical assessment. According to her, it would be available on the Star Trek Online game."
     },
     {
         "name": "Kiki's Delivery Service",
@@ -19,24 +19,37 @@
         "website": "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service", 
         "application_origin": {
             "origin_url": null,
-            "origin_name": null
+            "origin_name": "LinkedIn"
         },
-        "application_timestamp": 1691629910,
+        "application_timestamp": 1692641947,
         "status": ["sent"],
         "resume_url": "./resume/example-v1.pdf",
-        "note": "A delivery app could help Kiki manage the deliveries. Looking forward hearing from her ^-^"
+        "note": "A delivery app could help Kiki manage the deliveries so I contacted her on LinkedIn to describe my ideas for an iOS app and how I'm the right person to work on it. Still waiting for her reply. ^-^"
     },
     {
         "name": "Hogwarts",
-        "role": "student",
+        "role": "visionOS Developer",
         "website": "https://en.wikipedia.org/wiki/Kiki%27s_Delivery_Service", 
+        "application_origin": {
+            "origin_url": null,
+            "origin_name": "Gmail"
+        },
+        "application_timestamp": 1692728347,
+        "status": ["sent","rejected"],
+        "resume_url": "./resume/example-v1.pdf",
+        "note": "According to the rejection letter, a muggle would not be the best fit for this role."
+    },
+    {
+        "name": "Digimon",
+        "role": "Digi-Eggs Developer",
+        "website": "https://digimon.fandom.com/wiki/Digimon_Wiki", 
         "application_origin": {
             "origin_url": null,
             "origin_name": null
         },
-        "application_timestamp": 1691629910,
-        "status": ["rejected"],
-        "resume_url": "./resume/example-v1.pdf",
-        "note": "I'm a fool"
+        "application_timestamp": 1690055587,
+        "status": ["sent", "waiting_feedback"],
+        "resume_url": "",
+        "note": "Digimons are digital monster reside in a parallel universe called the Digital World. Digimon hatch from eggs called Digi-Eggs. This role is to programm new Digi-Eggs features."
     }
 ]
