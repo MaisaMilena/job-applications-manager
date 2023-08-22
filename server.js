@@ -23,7 +23,25 @@ app.get('/data',(req, res) => {
         }
 
         const jsonData = JSON.parse(data);
-        res.send(jsonData);
+        res.send(orderData(jsonData));
+    });
+})
+
+app.post('/data', bodyParser.json(), (req, res) => {
+    const body = req.body;
+
+    fs.readFile(__dirname + '/data.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading data.json:', err);
+            res.status(500).send('Internal Server Error');
+            return;
+        }
+    
+        const jsonData = JSON.parse(data);
+        const elements = Array.from(jsonData)
+        const filteredData = filterData(elements, body.status)
+
+        res.send(orderData(filteredData, body.order))
     });
 })
 
@@ -42,39 +60,43 @@ app.get('/resume/:file_name',(req, res) => {
     });
 })
 
-app.post('/data', bodyParser.json(), (req, res) => {
-    const body = req.body;
-    // console.log(body);
-
-    fs.readFile(__dirname + '/data.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading data.json:', err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
-    
-        const jsonData = JSON.parse(data);
-        const elements = Array.from(jsonData)
-        const filteredData = filterData(elements, body.status)
-    
-        res.send(filteredData);
-    });
-})
-
 // ---------------
+/**
+ * 
+ * @param {[Object]} data an array of applications from data.json
+ * @param {[String]} filteredStatus "sent", "passed_rh", "passed_tech", "rejected", "waiting_feedback"
+ * @returns filtered job applications
+ */
 function filterData(data, filteredStatus) {
-    // console.log(data)
-    console.log("Status: ", filteredStatus)
-    // ["sent", "passed_rh", "passed_tech", "rejected", "waiting_feedback"]
+    if (filteredStatus.length === 0) {
+        return data
+    }
     var response = new Set()
     data.forEach(application => {
         application.status.forEach( status => {
             if (filteredStatus.includes(String(application.status))) {
-                // console.log(" >>> application add")
                 response.add(application)
             }
         })
     })
-    // console.log(response)
     return Array.from(response)
 }
+
+/**
+ * 
+ * @param {[Object]} data an array of applications from data.json
+ * @param {String} order date_asc, date_desc, alphabetical
+ * @returns ordered array
+ */
+function orderData(data, order = "date_desc") {
+    let dataArray = Array.from(data)
+    console.log(order)
+    switch (order) {
+        case "date_asc":
+            return dataArray.sort((a,b) => a.application_timestamp - b.application_timestamp)
+        case "date_desc":
+            return dataArray.sort((a,b) => b.application_timestamp - a.application_timestamp)
+        case "alphabetical":
+            return dataArray.sort((a,b) => a.name.localeCompare(b.name))
+    }
+} 
