@@ -10,7 +10,7 @@
         },
         "application_timestamp": 1691629910,
         "status": ["passed_rh"],
-        "resume_url": "",
+        "resume_url": "resume_june",
         "note": "\"Ships and vessels are dependent on very sophisticated computer systems; these specialists are responsible for maintaining them.\" Recruiter contacted me. Waiting for my technical assessment. According to her, it would be available on the Star Trek Online game."
     },
     {
@@ -23,7 +23,7 @@
         },
         "application_timestamp": 1692641947,
         "status": ["sent"],
-        "resume_url": "./resume/example-v1.pdf",
+        "resume_url": "resume_june_v2",
         "note": "A delivery app could help Kiki manage the deliveries so I contacted her on LinkedIn to describe my ideas for an iOS app and how I'm the right person to work on it. Still waiting for her reply. ^-^"
     },
     {
@@ -36,7 +36,7 @@
         },
         "application_timestamp": 1692728347,
         "status": ["sent","rejected"],
-        "resume_url": "./resume/example-v1.pdf",
+        "resume_url": "resume_june",
         "note": "According to the rejection letter, a muggle would not be the best fit for this role."
     },
     {
