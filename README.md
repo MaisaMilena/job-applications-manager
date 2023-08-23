@@ -6,6 +6,8 @@
 - Check out the resume sent in the application
 - Keep track of where and when the application was submitted
 
+<img src="public/images/application-manager-overview.png" alt="website overview" width=700>
+
 The project is organized as:
 - `public folder`: frontend
 - `resume`: storage for resumes' `.pdf`
@@ -33,3 +35,6 @@ Update the `data.json` with your data, create your own filters, and update the s
 The idea of this project is to keep it very simple, only using HTML and pure JavaScript for the UI with a simple server.
 
 Contributions following these principles can be made through Pull Requests.
+
+## 📝 License
+Under MIT license. Check on [LICENSE](LICENSE) for details.
