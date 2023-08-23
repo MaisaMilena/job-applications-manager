@@ -90,7 +90,6 @@ function filterData(data, filteredStatus) {
  */
 function orderData(data, order = "date_desc") {
     let dataArray = Array.from(data)
-    console.log(order)
     switch (order) {
         case "date_asc":
             return dataArray.sort((a,b) => a.application_timestamp - b.application_timestamp)
