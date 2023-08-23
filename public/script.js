@@ -49,10 +49,19 @@ function makeResumeContent(item) {
             });
     }
 
-    return `
-    <span><a href="${item.resume_url}" target="_blank"">Check resume</a></span>
-    <p class="p_secondary">${formatDate(item.application_timestamp)}</p>
-    ` 
+    var component = `<p class="p_secondary">${formatDate(item.application_timestamp)}</p>`
+    // <span><a href="${item.resume_url}" target="_blank"">Check resume</a></span>
+    if (item.application_origin.origin_name && item.application_origin.origin_url) {
+        return component + `
+        <span><a href="${item.application_origin.origin_url}" target="_blank"">${item.application_origin.origin_name}</a></span>
+        ` 
+    } else if (item.application_origin.origin_name) {
+        return component + `
+        <span><p>${item.application_origin.origin_name}</p></span>
+        ` 
+    } else {
+        return component
+    }
 }
 
 function formatDate(timestamp) {
@@ -103,7 +112,6 @@ function addFilterData() {
         });
     })
 }
-
 
 fetch("/data")
     .then(response => response.json())

@@ -31,7 +31,7 @@ a:visited {
 }
 
 /* Where the application's card appear */
-.applications-container {
+.applications-container scrollable {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -69,4 +69,45 @@ a:visited {
 
 .body-filter-section {
     width: 200px;
+}
+
+.btn{
+    font-weight: 0;
+    font-size: 14px;
+    color: #fff;
+    background-color: #CD8987;
+    padding: 10px 30px;
+    border: 2px solid #CD8987;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 20px;
+    transition : 1000ms;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+.btn:hover{
+    transition : 1000ms;
+    /* padding: 10px 50px; */
+    transform : translateY(-0px);
+    background-color: #fff;
+    color: #CD8987;
+    border: solid 2px #CD8987;
+}
+
+.main_title {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #CD8987;
+}
+
+.title_for_context {
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
 }

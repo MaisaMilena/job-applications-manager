@@ -10,11 +10,12 @@
 </head>
 
 <body>
-    <h1>"Hi! 👋"</h1>
+    <h1 class="main_title">Maisa's applications 👩‍💻🌸</h1>
+    <div style="height: 20px"></div>
     <section class="body-container">
         <form id="filterForm"> 
             <div>
-                <p>Status</p>
+                <p class="title_for_context">Status</p>
                 <input type="checkbox" id="status0" name="status0" value="sent">
                 <label for="status0"> Sent</label><br>
                 <input type="checkbox" id="status1" name="status1" value="passed_rh">
@@ -28,7 +29,7 @@
             </div>
 
             <div>
-                <p>Ordering</p>
+                <p class="title_for_context">Ordering</p>
                 <input type="radio" id="order0" name="order" value="date_desc" checked>
                 <label for="order0"> Date desc</label><br>
                 <input type="radio" id="order1" name="order" value="date_asc">
@@ -37,13 +38,13 @@
                 <label for="order2"> Alphabetical</label><br>
             </div>
             <br><br>
-            <button type="submit" value="Submit">Submit</button>
+            <button type="submit" value="Submit" class="btn">Submit</button>
         </form>
 
         <div class="applications-container" id="content-list">
             <!-- Content will be added here dynamically -->
         </div>
-    <section></section>
+    </section>
     
 </body>
 
