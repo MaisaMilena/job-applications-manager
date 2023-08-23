@@ -11,6 +11,9 @@ function populateTable(data) {
         div.innerHTML = makeCardContent(item)
         dataContainer.appendChild(div);
     });
+    data.forEach((item) =>  {
+        addResumeFetchAction(item.resume_url)
+    })
 }
 
 function makeTotalCount(data) {
@@ -38,19 +41,10 @@ function makeCardContent(item) {
 }
 
 function makeResumeContent(item) {
-    const onClickAction = function (name) {
-        fetch("/resume/"+name)
-            .then(response => response.json())
-            .then(data => {
-                populateTable(data);
-            })
-            .catch(error => {
-                console.error("Error fetching JSON data:", error);
-            });
-    }
-
-    var component = `<p class="p_secondary">${formatDate(item.application_timestamp)}</p>`
-    // <span><a href="${item.resume_url}" target="_blank"">Check resume</a></span>
+    var component = `
+    <a href="#" id="pdf-link-${item.resume_url}">Check resume</a>
+    <p class="p_secondary">${formatDate(item.application_timestamp)}</p>
+    `
     if (item.application_origin.origin_name && item.application_origin.origin_url) {
         return component + `
         <span><a href="${item.application_origin.origin_url}" target="_blank"">${item.application_origin.origin_name}</a></span>
@@ -62,6 +56,25 @@ function makeResumeContent(item) {
     } else {
         return component
     }
+}
+
+function addResumeFetchAction(resumeFileName) {
+    document.getElementById("pdf-link-"+resumeFileName).addEventListener("click", function(event) {
+        event.preventDefault();
+        onClickResume(resumeFileName);
+    });
+}
+
+function onClickResume(resumeFileName) {
+    fetch(`/resume/${encodeURIComponent(resumeFileName)}`)
+        .then(response => response.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+            window.open(url); // Open the PDF in a new window/tab
+        })
+        .catch(error => {
+            console.error("Error fetching PDF data:", error);
+        });
 }
 
 function formatDate(timestamp) {
@@ -104,7 +117,6 @@ function addFilterData() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             populateTable(data);
         })
         .catch(error => {

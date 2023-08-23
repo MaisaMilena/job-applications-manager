@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const fs = require('fs'); 
+const path = require('path');
+
 const app = express()
 const port = 3000
 
@@ -46,18 +48,19 @@ app.post('/data', bodyParser.json(), (req, res) => {
 })
 
 app.get('/resume/:file_name',(req, res) => {
-    console.log(req)
-    let url = __dirname + '/resume/' + req["file_name"]
-    fs.readFile(url, 'utf8', (err, data) => {
-        if (err) {
-            console.error('Error reading data.json:', err);
-            res.status(500).send('Internal Server Error');
-            return;
-        }
+    const fileName = req.params.file_name;
+    const filePath = path.join(__dirname, 'resumes', fileName+".pdf");
 
-        // const jsonData = JSON.parse(data);
-        res.sendFile(data);
-    });
+    fs.readFile(filePath, (err, data) => {
+        if (!err && data) {
+            res.setHeader('Content-Type', 'application/pdf')
+            res.setHeader('Content-Disposition', `inline; filename="${fileName}"`)
+            res.send(data)
+        } else {
+            console.error(err)
+            res.status(404).send("PDF file not found")
+        }
+    })
 })
 
 // ---------------
