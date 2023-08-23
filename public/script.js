@@ -5,15 +5,21 @@ function populateTable(data) {
     const applicationsCount = document.createElement("p")
     applicationsCount.innerHTML = makeTotalCount(data)
     dataContainer.appendChild(applicationsCount)
-    data.forEach((item) => {
+    if (data.length > 0) {
+        data.forEach((item) => {
+            const div = document.createElement("div");
+            div.classList.add("application-card");
+            div.innerHTML = makeCardContent(item)
+            dataContainer.appendChild(div);
+        });
+        data.forEach((item) =>  {
+            addResumeFetchAction(item.resume_file_name)
+        })
+    } else {
         const div = document.createElement("div");
-        div.classList.add("application-card");
-        div.innerHTML = makeCardContent(item)
+        div.innerHTML = makeEmptyCard()
         dataContainer.appendChild(div);
-    });
-    data.forEach((item) =>  {
-        addResumeFetchAction(item.resume_url)
-    })
+    }
 }
 
 function makeTotalCount(data) {
@@ -36,33 +42,46 @@ function makeCardContent(item) {
         <div style="width: 20px"></div>
         <div class="application-card-trailing-content">
             ${makeResumeContent(item)}
-        </div>
-    ` 
+        </div>` 
+}
+
+function makeEmptyCard() {
+    return `
+    <div style="min-width: 700px">
+        <p>No content match this filter.</p>
+    </div>`
 }
 
 function makeResumeContent(item) {
     var component = `
-    <a href="#" id="pdf-link-${item.resume_url}">Check resume</a>
     <p class="p_secondary">${formatDate(item.application_timestamp)}</p>
     `
     if (item.application_origin.origin_name && item.application_origin.origin_url) {
-        return component + `
-        <span><a href="${item.application_origin.origin_url}" target="_blank"">${item.application_origin.origin_name}</a></span>
+        component += `
+        <a href="${item.application_origin.origin_url}" target="_blank"">${item.application_origin.origin_name}</a>
         ` 
     } else if (item.application_origin.origin_name) {
-        return component + `
-        <span><p>${item.application_origin.origin_name}</p></span>
-        ` 
-    } else {
-        return component
+        component += `<p>${item.application_origin.origin_name}</p>` 
     }
+
+    if (item.resume_file_name) {
+        component += `
+        <div style="height: 10px"></div> 
+        <a href="#" id="pdf-link-${item.resume_file_name}">
+        <img src="images/icon-resume.svg" style="width:40px; height:40px;">
+        </a>`
+    }
+
+    return component
 }
 
 function addResumeFetchAction(resumeFileName) {
-    document.getElementById("pdf-link-"+resumeFileName).addEventListener("click", function(event) {
-        event.preventDefault();
-        onClickResume(resumeFileName);
-    });
+    if (resumeFileName != null) {
+        document.getElementById("pdf-link-"+resumeFileName).addEventListener("click", function(event) {
+            event.preventDefault();
+            onClickResume(resumeFileName);
+        });
+    }
 }
 
 function onClickResume(resumeFileName) {

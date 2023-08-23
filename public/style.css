@@ -59,12 +59,14 @@ a:visited {
     display: flex; 
     flex-direction: column; 
     max-width: 200px;
+    /* justify-content: space-between; */
+    align-items: flex-end;
 }
 
 .body-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .body-filter-section {
