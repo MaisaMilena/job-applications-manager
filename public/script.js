@@ -6,15 +6,15 @@ function populateTable(data) {
     applicationsCount.innerHTML = makeTotalCount(data)
     dataContainer.appendChild(applicationsCount)
     if (data.length > 0) {
-        data.forEach((item) => {
+        for (const application of data) {
             const div = document.createElement("div");
             div.classList.add("application-card");
-            div.innerHTML = makeCardContent(item)
+            div.innerHTML = makeCardContent(application)
             dataContainer.appendChild(div);
-        });
-        data.forEach((item) =>  {
-            addResumeFetchAction(item.resume_file_name)
-        })
+        }
+        for (const application of data) {
+            addResumeFetchAction(application.resume_file_name)
+        }
     } else {
         const div = document.createElement("div");
         div.innerHTML = makeEmptyCard()
@@ -23,10 +23,7 @@ function populateTable(data) {
 }
 
 function makeTotalCount(data) {
-    let dataArray = Array.from(data)
-    return `
-        <p>Total: ${dataArray.length}</p>
-    `
+    return `<p>Total: ${data.length}</p>`
 }
 
 function makeCardContent(item) {

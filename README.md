@@ -26,7 +26,7 @@ node server.js
 ```
 Then, on your browser, go to `http://localhost:3000/`
 
-## 🧙‍♀️ Create your won Job Application Manager 
+## 🧙‍♀️ Create your own Job Application Manager 
 Download the project and add it to your own private repository. If you fork it, you won't be able to change its visibility to private.
 
 Update the `data.json` with your data, create your own filters, and update the style to match your preferences.
