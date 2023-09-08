@@ -77,7 +77,7 @@ function filterData(data, filteredStatus) {
     var response = new Set()
     data.forEach(application => {
         application.status.forEach( status => {
-            if (filteredStatus.includes(String(application.status))) {
+            if (filteredStatus.includes(String(status))) {
                 response.add(application)
             }
         })
